@@ -14,6 +14,7 @@
 		A679C9FD1CD02AD500E5DC62 /* AFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A679C9FC1CD02AD500E5DC62 /* AFViewController.m */; };
 		A679CA001CD12A3400E5DC62 /* AFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A679C9FF1CD12A3400E5DC62 /* AFTableViewCell.m */; };
 		A679CA021CD131FC00E5DC62 /* page1.png in Resources */ = {isa = PBXBuildFile; fileRef = A679CA011CD131FC00E5DC62 /* page1.png */; };
+		A679CA051CD16B2D00E5DC62 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A679CA041CD16B2C00E5DC62 /* CollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		A679C9FE1CD12A3400E5DC62 /* AFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFTableViewCell.h; sourceTree = "<group>"; };
 		A679C9FF1CD12A3400E5DC62 /* AFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFTableViewCell.m; sourceTree = "<group>"; };
 		A679CA011CD131FC00E5DC62 /* page1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page1.png; sourceTree = "<group>"; };
+		A679CA031CD16B2C00E5DC62 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		A679CA041CD16B2C00E5DC62 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,8 @@
 				A679C9FC1CD02AD500E5DC62 /* AFViewController.m */,
 				A679C9FE1CD12A3400E5DC62 /* AFTableViewCell.h */,
 				A679C9FF1CD12A3400E5DC62 /* AFTableViewCell.m */,
+				A679CA031CD16B2C00E5DC62 /* CollectionViewCell.h */,
+				A679CA041CD16B2C00E5DC62 /* CollectionViewCell.m */,
 				A679C9E71CD0299C00E5DC62 /* AppDelegate.h */,
 				A679C9E81CD0299C00E5DC62 /* AppDelegate.m */,
 				A679C9F01CD0299C00E5DC62 /* Assets.xcassets */,
@@ -155,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A679C9E91CD0299C00E5DC62 /* AppDelegate.m in Sources */,
+				A679CA051CD16B2D00E5DC62 /* CollectionViewCell.m in Sources */,
 				A679C9FD1CD02AD500E5DC62 /* AFViewController.m in Sources */,
 				A679CA001CD12A3400E5DC62 /* AFTableViewCell.m in Sources */,
 				A679C9E61CD0299C00E5DC62 /* main.m in Sources */,

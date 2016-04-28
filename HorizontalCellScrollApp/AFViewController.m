@@ -8,6 +8,7 @@
 
 #import "AFViewController.h"
 #import "AFTableViewCell.h"
+#import "CollectionViewCell.h"
 
 @interface AFViewController ()
 
@@ -20,7 +21,7 @@
 -(void)loadView {
     [super loadView];
     
-    const NSInteger numberOfTableViewRows = 20;
+    const NSInteger numberOfTableViewRows = 10;
     const NSInteger numberOfCollectionViewCells = 15;
     
     NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:numberOfTableViewRows];
@@ -47,9 +48,11 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
-
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [NSString stringWithFormat:@"Yo! this section number:%ld", section+1];
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.colorArray.count;
     
@@ -64,6 +67,7 @@
     if (!cell) {
         cell = [[AFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    
     //cell.textLabel.text = @"Hello";
     return cell;
 }
@@ -72,13 +76,14 @@
     [cell setCollectionViewDataSourceDelegate:self indexPath:indexPath];
     NSInteger index = cell.collectionView.tag;
     
+    
     CGFloat horizontalOffSet = [self.contentOffsetDictionary[[@(index) stringValue]] floatValue];
     [cell.collectionView setContentOffset:CGPointMake(horizontalOffSet, 0)];
 }
 
 #pragma mark - UITableViewDelegate Methods
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 66;
+    return 132;
 }
 /*
 // Override to support conditional editing of the table view.
@@ -132,10 +137,32 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CollectionViewCellIdentifier forIndexPath:indexPath];
+    CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ccell forIndexPath:indexPath];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 20, 80, 40)];
+    label.text = [NSString stringWithFormat:@"%ld",indexPath.item];
     
+    //fixes repetition in cells
+    for (UIView* view in [cell.contentView subviews])
+    {
+        if ([view isKindOfClass:[UILabel class]])  //Condition if that view belongs to any specific class
+        {
+            [view removeFromSuperview];
+        }
+    }
+    
+    [cell.contentView addSubview:label];
+
     NSArray *collectionViewArray =  self.colorArray[[(AFIndexedCollectionView*)collectionView indexPath].row];
     cell.backgroundColor = collectionViewArray[indexPath.item];
+    //cell.label.text = @"what";
+
+
+    //[cell.contentView addSubview:label];
+//    [self.view addSubview:label];
+    
+//    //NSLog(@"cell.contentView x:%f y:%f width:%f height:%f", cell.contentView.frame.origin.x, cell.contentView.frame.origin.y, cell.contentView.frame.size.width, cell.frame.size.height);
+
+    
     
     return cell;
     

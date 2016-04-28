@@ -19,6 +19,7 @@ static NSString *CollectionViewCellIdentifier = @"CollectionViewCellIdentifier";
 @interface AFTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) AFIndexedCollectionView *collectionView;
+@property (nonatomic, strong) UILabel *label;
 
 - (void)setCollectionViewDataSourceDelegate:(id<UICollectionViewDataSource, UICollectionViewDelegate>)dataSourceDelegate indexPath:(NSIndexPath *) indexPath;
 

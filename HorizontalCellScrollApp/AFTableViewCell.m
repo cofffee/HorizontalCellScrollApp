@@ -7,6 +7,7 @@
 //
 
 #import "AFTableViewCell.h"
+#import "CollectionViewCell.h"
 
 @implementation AFIndexedCollectionView
 
@@ -30,20 +31,21 @@
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.sectionInset = UIEdgeInsetsMake(10, 10, 9, 10);
-    layout.itemSize = CGSizeMake(44, 44);
+    layout.itemSize = CGSizeMake(88, 88);
+    
+    
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self.collectionView = [[AFIndexedCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:CollectionViewCellIdentifier];
+    [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:ccell];
     self.collectionView.backgroundColor = [UIColor whiteColor];
-    self.collectionView.showsHorizontalScrollIndicator = NO;
+    self.collectionView.showsHorizontalScrollIndicator = YES;
     [self.contentView addSubview:self.collectionView];
-    
-    
     
     return self;
 }
 -(void)layoutSubviews {
     [super layoutSubviews];
+    //NSLog(@"cell.contentView x:%f y:%f width:%f height:%f", cell.contentView.frame.origin.x, cell.contentView.frame.origin.y, cell.contentView.frame.size.width, cell.frame.size.height);
     
     self.collectionView.frame = self.contentView.bounds;
 }
