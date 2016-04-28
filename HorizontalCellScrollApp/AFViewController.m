@@ -137,9 +137,13 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ccell forIndexPath:indexPath];
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 20, 80, 40)];
-    label.text = [NSString stringWithFormat:@"%ld",indexPath.item];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CollectionViewCellIdentifier forIndexPath:indexPath];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 20, 100, 40)];
+    label.text = [NSString stringWithFormat:@"s:%ldr:%ld",indexPath.section, indexPath.item];
+    
+    UIImageView *myImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+    myImage.image = [UIImage imageNamed:@"page1.ico"];
+    
     
     //fixes repetition in cells
     for (UIView* view in [cell.contentView subviews])
@@ -148,12 +152,18 @@
         {
             [view removeFromSuperview];
         }
+        if ([view isKindOfClass:[UIImageView class]])  //Condition if that view belongs to any specific class
+        {
+            [view removeFromSuperview];
+        }
     }
     
     [cell.contentView addSubview:label];
+    [cell.contentView addSubview:myImage];
 
     NSArray *collectionViewArray =  self.colorArray[[(AFIndexedCollectionView*)collectionView indexPath].row];
     cell.backgroundColor = collectionViewArray[indexPath.item];
+    
     //cell.label.text = @"what";
 
 
@@ -176,5 +186,14 @@
     UICollectionView *collectionView = (UICollectionView*)scrollView;
     NSInteger index = collectionView.tag;
     self.contentOffsetDictionary[[@(index) stringValue]] = @(horizontalOffSet);
+}
+- (void)collectionView:(UICollectionView *)colView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell* cell = [colView cellForItemAtIndexPath:indexPath];
+    cell.contentView.backgroundColor = [UIColor blueColor];
+}
+
+- (void)collectionView:(UICollectionView *)colView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell* cell = [colView cellForItemAtIndexPath:indexPath];
+    cell.contentView.backgroundColor = nil;
 }
 @end
